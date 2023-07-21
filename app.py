@@ -9,6 +9,7 @@ import pytesseract
 from PIL import Image
 
 
+
 st.title("Reconocimiento óptico de Caracteres")
 
 img_file_buffer = st.camera_input("Toma una Foto")
@@ -32,18 +33,17 @@ if img_file_buffer is not None:
     text=pytesseract.image_to_string(img_rgb)
     st.write(text) 
 
-    
-    #text = st.text_input("Que decir?")
-
     tts_button = Button(label="Decirlo", width=100)
 
+    st.bokeh_chart(tts_button)  
     tts_button.js_on_event("button_click", CustomJS(code=f"""
         var u = new SpeechSynthesisUtterance();
         u.text = "{text}";
         u.lang = 'es-es';   
 
         speechSynthesis.speak(u);
-         """))
-    st.bokeh_chart(tts_button)
+        """))
+
+ 
 
     
