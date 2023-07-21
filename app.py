@@ -7,7 +7,7 @@ import numpy as np
 import pytesseract
 from PIL import Image
 
-
+text=""
 
 st.title("Reconocimiento óptico de Caracteres")
 
