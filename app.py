@@ -1,8 +1,7 @@
+import streamlit as st
 from bokeh.models.widgets import Button
 from bokeh.models import CustomJS
 from streamlit_bokeh_events import streamlit_bokeh_events
-
-import streamlit as st
 import cv2
 import numpy as np
 import pytesseract
@@ -35,7 +34,7 @@ if img_file_buffer is not None:
 
     tts_button = Button(label="Decirlo", width=100)
 
-    st.bokeh_chart(tts_button)  
+      
       
     tts_button.js_on_event("button_click", CustomJS(code=f"""
         var u = new SpeechSynthesisUtterance();
@@ -44,6 +43,8 @@ if img_file_buffer is not None:
 
         speechSynthesis.speak(u);
         """))
+
+    st.bokeh_chart(tts_button)   
 
  
     
