@@ -33,16 +33,17 @@ if img_file_buffer is not None:
     st.write(text) 
 
 tts_button = Button(label="Decirlo", width=100)
-   
+
 tts_button.js_on_event("button_click", CustomJS(code=f"""
-        var u = new SpeechSynthesisUtterance();
-        u.text = "{text}";
-        u.lang = 'es-es';   
+    var u = new SpeechSynthesisUtterance();
+    u.text = "{text}";
+    u.lang = 'es-es';   
 
-        speechSynthesis.speak(u);
-        """))
+    speechSynthesis.speak(u);
+    """))
 
-st.bokeh_chart(tts_button)   
+
+st.bokeh_chart(tts_button)  
 
  
     
