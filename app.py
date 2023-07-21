@@ -28,7 +28,7 @@ with st.sidebar:
           """))
 
 
-          st.bokeh_chart(tts_button)  
+      st.bokeh_chart(tts_button)  
 
 
 if img_file_buffer is not None:
