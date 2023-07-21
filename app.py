@@ -1,50 +1,68 @@
+#import streamlit as st
+#from bokeh.models.widgets import Button
+#from bokeh.models import CustomJS
+#from streamlit_bokeh_events import streamlit_bokeh_events
+#import cv2
+#import numpy as np
+#import pytesseract
+#from PIL import Image
+
 import streamlit as st
 from bokeh.models.widgets import Button
 from bokeh.models import CustomJS
 from streamlit_bokeh_events import streamlit_bokeh_events
-import cv2
-import numpy as np
-import pytesseract
-from PIL import Image
 
-text="Hola"
+st.title("Interfaces Multimodales Audio y Texto")
 
-st.title("Reconocimiento óptico de Caracteres")
+st.write("Interfaz de texto a Audio")
+text = st.text_input("Que decir?")
 
+tts_button = Button(label="Decirlo", width=100)
 
-img_file_buffer = st.camera_input("Toma una Foto")
+tts_button.js_on_event("button_click", CustomJS(code=f"""
+    var u = new SpeechSynthesisUtterance();
+    u.text = "{text}";
+    u.lang = 'es-es';   
 
-with st.sidebar:
-      filtro = st.radio("Aplicar Filtro",('Con Filtro', 'Sin Filtro'))
+    speechSynthesis.speak(u);
+    """))
 
-      tts_button = Button(label="Decirlo", width=100)
+st.bokeh_chart(tts_button)
 
-      tts_button.js_on_event("button_click", CustomJS(code=f"""
-          var u = new SpeechSynthesisUtterance();
-          u.text = "{text}";
-          u.lang = 'es-es';   
+st.write("Interfaz de Audio a texto")
+stt_button = Button(label="Habla", width=100)
 
-          speechSynthesis.speak(u);
-          """))
+stt_button.js_on_event("button_click", CustomJS(code="""
+    var recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+ 
+    recognition.onresult = function (e) {
+        var value = "";
+        for (var i = e.resultIndex; i < e.results.length; ++i) {
+            if (e.results[i].isFinal) {
+                value += e.results[i][0].transcript;
+            }
+        }
+        if ( value != "") {
+            document.dispatchEvent(new CustomEvent("GET_TEXT", {detail: value}));
+        }
+    }
+    recognition.start();
+    """))
 
+result = streamlit_bokeh_events(
+    stt_button,
+    events="GET_TEXT",
+    key="listen",
+    refresh_on_update=False,
+    override_height=75,
+    debounce_time=0)
 
-       st.bokeh_chart(tts_button)  
-
-
-if img_file_buffer is not None:
-    # To read image file buffer with OpenCV:
-    bytes_data = img_file_buffer.getvalue()
-    cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
-    
-    if filtro == 'Con Filtro':
-         cv2_img=cv2.bitwise_not(cv2_img)
-    else:
-         cv2_img= cv2_img
-    
+if result:
+    if "GET_TEXT" in result:
+        st.write(result.get("GET_TEXT"))
         
-    img_rgb = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
-    text=pytesseract.image_to_string(img_rgb)
-    st.write(text) 
 
 
 
