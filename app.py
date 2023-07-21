@@ -35,7 +35,7 @@ if img_file_buffer is not None:
     st.title("Interfaces Multimodales Audio y Texto")
 
     st.write("Interfaz de texto a Audio")
-#text = st.text_input("Que decir?")
+    #text = st.text_input("Que decir?")
 
     tts_button = Button(label="Decirlo", width=100)
 
@@ -46,5 +46,4 @@ if img_file_buffer is not None:
 
         speechSynthesis.speak(u);
          """))
-
-     st.bokeh_chart(tts_button)
+    st.bokeh_chart(tts_button)
