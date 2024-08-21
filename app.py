@@ -50,41 +50,41 @@ translator = Translator()
 
 #text = st.text_input("Enter text")
 in_lang = st.selectbox(
-    "Select your input language",
-    ("English", "Spanish", "Bengali", "korean", "Chinese", "Japanese"),
+    "Seleccione el lenguaje de entrada",
+    ("Ingles", "Español", "Bengali", "koreano", "Mandarin", "Japones"),
 )
-if in_lang == "English":
+if in_lang == "Ingles":
     input_language = "en"
-elif in_lang == "Spanish":
+elif in_lang == "Español":
     input_language = "es"
 elif in_lang == "Bengali":
     input_language = "bn"
-elif in_lang == "korean":
+elif in_lang == "koreano":
     input_language = "ko"
-elif in_lang == "Chinese":
+elif in_lang == "Mandarin":
     input_language = "zh-cn"
-elif in_lang == "Japanese":
+elif in_lang == "Japones":
     input_language = "ja"
 
 out_lang = st.selectbox(
     "Select your output language",
-    ("English", "Spanish", "Bengali", "korean", "Chinese", "Japanese"),
+    ("Ingles", "Español", "Bengali", "koreano", "Mandarin", "Japones"),
 )
-if out_lang == "English":
+if out_lang == "Ingles":
     output_language = "en"
-elif out_lang == "Spanish":
+elif out_lang == "Español":
     output_language = "es"
 elif out_lang == "Bengali":
     output_language = "bn"
-elif out_lang == "korean":
+elif out_lang == "koreano":
     output_language = "ko"
 elif out_lang == "Chinese":
     output_language = "zh-cn"
-elif out_lang == "Japanese":
+elif out_lang == "Japones":
     output_language = "ja"
 
 english_accent = st.selectbox(
-    "Select your english accent",
+    "Seleccione el acento",
     (
         "Default",
         "India",
