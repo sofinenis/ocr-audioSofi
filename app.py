@@ -16,8 +16,8 @@ st.title("Reconocimiento óptico de Caracteres")
 
 cam_ = st.checkbox("Usar Cámara")
 
-
-img_file_buffer = st.camera_input("Toma una Foto")
+if cam_ :
+   img_file_buffer = st.camera_input("Toma una Foto")
 
 
 with st.sidebar:
