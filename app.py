@@ -23,7 +23,9 @@ bg_image = st.sidebar.file_uploader("Cargar Imagen:", type=["png", "jpg"])
 if bg_image is not None:
     bytes_data = img_file_buffer.getvalue()
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
-
+    text=pytesseract.image_to_string(bg_image)
+    st.write(text)   
+      
 if img_file_buffer is not None:
     # To read image file buffer with OpenCV:
     bytes_data = img_file_buffer.getvalue()
@@ -36,7 +38,7 @@ if img_file_buffer is not None:
     
         
     img_rgb = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
-    text=pytesseract.image_to_string(img_rgb)
+    text=pytesseract.image_to_string(img_rgb) 
     st.write(text) 
 
 
