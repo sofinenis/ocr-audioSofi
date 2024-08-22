@@ -21,9 +21,17 @@ with st.sidebar:
 
 bg_image = st.sidebar.file_uploader("Cargar Imagen:", type=["png", "jpg"])
 if bg_image is not None:
-    img_cv = cv2.imread('parrafo.png')
-    img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
-    st.write(pytesseract.image_to_string(img_rgb))  
+    
+    st.image(uploaded_file, caption='Imagen cargada.', use_column_width=True)
+    
+    # Guardar la imagen en el sistema de archivos
+    with open(uploaded_file.name, 'wb') as f:
+        f.write(uploaded_file.read())
+    
+    st.success(f"Imagen guardada como {uploaded_file.name}")
+    #img_cv = cv2.imread('parrafo.png')
+    #img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
+    #st.write(pytesseract.image_to_string(img_rgb))  
     
       
 if img_file_buffer is not None:
