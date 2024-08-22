@@ -16,10 +16,9 @@ st.title("Reconocimiento óptico de Caracteres")
 
 cam_ = st.checkbox("Usar Cámara")
 
-if cam_:
-    img_file_buffer = st.camera_input("Toma una Foto")
-else :
-    img_file_buffer is None
+
+img_file_buffer = st.camera_input("Toma una Foto")
+
 
 with st.sidebar:
       filtro = st.radio("Aplicar Filtro",('Con Filtro', 'Sin Filtro'))
