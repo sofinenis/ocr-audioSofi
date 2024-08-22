@@ -55,7 +55,7 @@ if img_file_buffer is not None:
     st.write(text) 
 
 
-
+st.subheader("Herramienta de traducción")
 
 try:
     os.mkdir("temp")
