@@ -12,9 +12,6 @@ from gtts import gTTS
 from googletrans import Translator
 
 
-
-
-
 st.title("Reconocimiento óptico de Caracteres")
 
 img_file_buffer = st.camera_input("Toma una Foto")
