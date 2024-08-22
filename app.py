@@ -23,7 +23,7 @@ else :
 with st.sidebar:
       filtro = st.radio("Aplicar Filtro",('Con Filtro', 'Sin Filtro'))
 
-bg_image = st.sidebar.file_uploader("Cargar Imagen:", type=["png", "jpg"])
+bg_image = st.file_uploader("Cargar Imagen:", type=["png", "jpg"])
 if bg_image is not None:
     uploaded_file=bg_image
     st.image(uploaded_file, caption='Imagen cargada.', use_column_width=True)
