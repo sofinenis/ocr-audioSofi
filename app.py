@@ -22,8 +22,8 @@ with st.sidebar:
 bg_image = st.sidebar.file_uploader("Cargar Imagen:", type=["png", "jpg"])
 if bg_image is not None:
     img_cv = cv2.imread(r'/content/parrafo.png')
-    img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
-    st.write(pytesseract.image_to_string(img_rgb))  
+    #img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
+    st.write(pytesseract.image_to_string(img_cv))  
     
       
 if img_file_buffer is not None:
