@@ -29,7 +29,7 @@ if bg_image is not None:
         f.write(uploaded_file.read())
     
     st.success(f"Imagen guardada como {uploaded_file.name}")
-    img_cv = cv2.imread('parrafo.png')
+    img_cv = cv2.imread('{uploaded_file.name}')
     img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
     st.write(pytesseract.image_to_string(img_rgb))  
     
