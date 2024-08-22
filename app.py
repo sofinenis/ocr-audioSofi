@@ -18,7 +18,7 @@ cam_ = st.checkbox("Usar Cámara")
 
 if cam_ :
    img_file_buffer = st.camera_input("Toma una Foto")
-else
+else :
    bg_image = st.sidebar.file_uploader("Cargar Imagen:", type=["png", "jpg"])
 with st.sidebar:
       filtro = st.radio("Aplicar Filtro",('Con Filtro', 'Sin Filtro'))
