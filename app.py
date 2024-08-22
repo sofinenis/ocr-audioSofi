@@ -14,7 +14,11 @@ from googletrans import Translator
 
 st.title("Reconocimiento óptico de Caracteres")
 
-img_file_buffer = st.camera_input("Toma una Foto")
+cam_ = st.checkbox("Usar Cámara")
+
+if cam_:
+    img_file_buffer = st.camera_input("Toma una Foto")
+
 
 with st.sidebar:
       filtro = st.radio("Aplicar Filtro",('Con Filtro', 'Sin Filtro'))
