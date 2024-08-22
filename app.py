@@ -31,7 +31,8 @@ if bg_image is not None:
     st.success(f"Imagen guardada como {uploaded_file.name}")
     img_cv = cv2.imread(f'{uploaded_file.name}')
     img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
-    st.write(pytesseract.image_to_string(img_rgb))  
+    text= pytesseract.image_to_string(img_rgb)
+    st.write(text)  
     
       
 if img_file_buffer is not None:
