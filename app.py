@@ -11,6 +11,36 @@ from gtts import gTTS
 from googletrans import Translator
 
 
+def text_to_speech(input_language, output_language, text, tld):
+    translation = translator.translate(text, src=input_language, dest=output_language)
+    trans_text = translation.text
+    tts = gTTS(trans_text, lang=output_language, tld=tld, slow=False)
+    try:
+        my_file_name = text[0:20]
+    except:
+        my_file_name = "audio"
+    tts.save(f"temp/{my_file_name}.mp3")
+    return my_file_name, trans_text
+
+
+
+
+def remove_files(n):
+    mp3_files = glob.glob("temp/*mp3")
+    if len(mp3_files) != 0:
+        now = time.time()
+        n_days = n * 86400
+        for f in mp3_files:
+            if os.stat(f).st_mtime < now - n_days:
+                os.remove(f)
+                print("Deleted ", f)
+
+
+remove_files(7)
+  
+
+
+
 st.title("Reconocimiento óptico de Caracteres")
 
 cam_ = st.checkbox("Usar Cámara")
@@ -144,34 +174,6 @@ with st.sidebar:
               st.markdown(f"## Texto de salida:")
               st.write(f" {output_text}")
 
-
-      def text_to_speech(input_language, output_language, text, tld):
-          translation = translator.translate(text, src=input_language, dest=output_language)
-          trans_text = translation.text
-          tts = gTTS(trans_text, lang=output_language, tld=tld, slow=False)
-          try:
-              my_file_name = text[0:20]
-          except:
-              my_file_name = "audio"
-          tts.save(f"temp/{my_file_name}.mp3")
-          return my_file_name, trans_text
-      
-      
-      
-      
-      def remove_files(n):
-          mp3_files = glob.glob("temp/*mp3")
-          if len(mp3_files) != 0:
-              now = time.time()
-              n_days = n * 86400
-              for f in mp3_files:
-                  if os.stat(f).st_mtime < now - n_days:
-                      os.remove(f)
-                      print("Deleted ", f)
-      
-      
-      remove_files(7)
-        
 
 
 
