@@ -22,6 +22,10 @@ img_file_buffer = st.camera_input("Toma una Foto")
 with st.sidebar:
       filtro = st.radio("Aplicar Filtro",('Con Filtro', 'Sin Filtro'))
 
+bg_image = st.sidebar.file_uploader("Cargar Imagen:", type=["png", "jpg"])
+if bg_image is not None:
+    bytes_data = img_file_buffer.getvalue()
+    cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
 
 if img_file_buffer is not None:
     # To read image file buffer with OpenCV:
