@@ -54,8 +54,7 @@ if img_file_buffer is not None:
     text=pytesseract.image_to_string(img_rgb) 
     st.write(text) 
 
-else:
-    pass
+
 
 
 try:
