@@ -140,17 +140,17 @@ def text_to_speech(input_language, output_language, text, tld):
     return my_file_name, trans_text
 
 
-display_output_text = st.checkbox("Display output text")
+display_output_text = st.checkbox("Mostrar texto")
 
 if st.button("convert"):
     result, output_text = text_to_speech(input_language, output_language, text, tld)
     audio_file = open(f"temp/{result}.mp3", "rb")
     audio_bytes = audio_file.read()
-    st.markdown(f"## Your audio:")
+    st.markdown(f"## Tu audio:")
     st.audio(audio_bytes, format="audio/mp3", start_time=0)
 
     if display_output_text:
-        st.markdown(f"## Output text:")
+        st.markdown(f"## Texto de salida:")
         st.write(f" {output_text}")
 
 
