@@ -53,7 +53,8 @@ else :
    img_file_buffer = None
    
 with st.sidebar:
-      filtro = st.radio("Aplicar Filtro",('Con Filtro', 'Sin Filtro'))
+      st.subheader("Procesamiento para Cámara")
+      filtro = st.radio("Filtro para imagen con cámara",('Sí', 'No'))
 
 bg_image = st.file_uploader("Cargar Imagen:", type=["png", "jpg"])
 if bg_image is not None:
@@ -76,7 +77,7 @@ if img_file_buffer is not None:
     bytes_data = img_file_buffer.getvalue()
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
 
-    st.subheader("Procesamiento para Cámara")
+    
     if filtro == 'Con Filtro':
          cv2_img=cv2.bitwise_not(cv2_img)
     else:
