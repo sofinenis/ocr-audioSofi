@@ -44,7 +44,7 @@ remove_files(7)
 
 
 st.title("Reconocimiento Óptico de Caracteres")
-st.write("Elige la fuente de la imágen.")
+st.markdown("Elige la fuente de la imágen, esta puede venir de la cámara o cargando un archivo")
 
 cam_ = st.checkbox("Usar Cámara")
 
