@@ -44,6 +44,7 @@ remove_files(7)
 
 
 st.title("Reconocimiento Óptico de Caracteres")
+st.write("Elige la fuente de la imágen.")
 
 cam_ = st.checkbox("Usar Cámara")
 
