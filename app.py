@@ -43,7 +43,7 @@ remove_files(7)
 
 
 
-st.title("Reconocimiento óptico de Caracteres")
+st.title("Reconocimiento Óptico de Caracteres")
 
 cam_ = st.checkbox("Usar Cámara")
 
