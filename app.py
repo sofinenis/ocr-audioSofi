@@ -66,7 +66,7 @@ if bg_image is not None:
     img_cv = cv2.imread(f'{uploaded_file.name}')
     img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
     text= pytesseract.image_to_string(img_rgb)
-    st.write(text)  
+st.write(text)  
     
       
 if img_file_buffer is not None:
