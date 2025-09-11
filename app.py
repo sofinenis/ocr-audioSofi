@@ -43,8 +43,8 @@ remove_files(7)
 
 
 
-st.title("Reconocimiento Óptico de Caracterejijijis")
-st.subheader("Elige la fuente de la imágen, esta puede venir de la cámara o cargando un archivo")
+st.title("Reconocete hermana")
+st.subheader("muestrame algooo")
 
 cam_ = st.checkbox("Usar Cámara")
 
